@@ -20,7 +20,7 @@ with open(path.join(this_directory, "jupytext/version.py")) as f:
     version = version_match.group(1)
 
 setup_args = dict(
-    name="jupytext",
+    name="jupytext-ebp",
     version=version,
     author="Marc Wouts",
     author_email="marc.wouts@gmail.com",
@@ -32,7 +32,12 @@ setup_args = dict(
     packages=find_packages(exclude=["tests"]),
     entry_points={"console_scripts": ["jupytext = jupytext.cli:jupytext"]},
     tests_require=["pytest"],
-    install_requires=["nbformat", "pyyaml", "toml", "markdown-it-py~=0.6.0"],
+    install_requires=[
+        "nbformat",
+        "pyyaml",
+        "toml",
+        "markdown-it-py[plugins]>=1.0.0b2,<2",
+    ],
     python_requires="~=3.6",
     extras_require={
         # left for back-compatibility
